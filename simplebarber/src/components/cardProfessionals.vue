@@ -1,64 +1,37 @@
 <template>
-	<div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
-      <div class="card bg-light d-flex flex-fill">
-        <div class="card-header text-muted border-bottom-0">
-          Barbeiro
-        </div>
-        <div class="card-body pt-0">
-          <div class="row">
-            <div class="col-7">
-              <h2 class="lead"><b>{{ name }} {{ firstName }}</b></h2>
-              <p class="text-muted text-sm">
-
-				<b><i class="fas fa-envelope"></i> email</b> 
-				<br>{{email }}<br><br>
-
-				<b><i class="fas fa-phone-square-alt"></i> telefone </b>
-				<br>{{ phone }}<br><br>
-
-				<b><i class="fas fa-percentage"></i> comissão:
-				</b> {{ comission }}% <br>
-
-				<b><i class="fas fa-lock"></i> login: </b> 
-				<small v-if="login==0" class="bg-danger">inativo </small>
-
-				<small v-if="login==1" class="bg-success"> ativo </small>
-
-              </p>
-            </div>
-            <div class="col-5 text-center">
-								<img src="../assets/img/profile/profile-default.jpg" alt="user-avatar" class="img-circle img-fluid">
-
-					<button class="btn btn-info" id="show-modal" @click="showModal=true">agenda</button>
-					<br>
-          <a href="#" class="btn btn-sm btn-info mt8" style="margin-top:10px">
-					<i class=""></i> ver perfil
-					</a>
-            </div>
-          </div>
-        </div>
-        <div class="card-footer">
-			<div class="text-right"></div>
-        </div>
+	<div class="col-12 col-sm-3 col-md-3 ">
+    <div class="card  text-center d-flex flex-fill card-professional">
+      <div class="card-header text-muted  border-bottom-0">
       </div>
+      <div class="card-body pt-0">
+           <img src="../assets/img/profile/profile-default.jpg" alt="user-avatar" class="img-circle img-fluid img-perfil">
+						<h6 class="mt-2">{{name}} {{firstName }}</h6>
+
+              <ld>
+								<dd><i class="fas fa-phone-square"></i> {{ phone }}
+								</dd>
+								<dd>  {{ comission }} <i class="fas fa-percentage"></i></dd>
+							</ld>
+								
+								<router-link :to="({ name:'agenda', params:{	idProfessional:	this.id} })">
+									<button class="btn btn-primary btn-sm btn-agenda" id="show-modal" @click="showModal=true">
+										<i class="fas fa-calendar-alt"></i>	agenda
+									</button>
+								</router-link>
+
+								
+        </div>
+      <div class="card-footer text-center">
+				<router-link to="" style="color:#fff">
+						<i class=""></i> ver perfil
+				</router-link>
+      </div>
+    </div>
 	</div>
- <!-- use the modal component, pass in the prop -->
-    <modal :show="showModal" @close="showModal = false">
-      <template #header>
-						<headerAgenda />
-      </template>
-			<template #body>
-				<reservadosAgenda />
-				<horariosAgenda />
-			</template>
-    </modal>
+
   
 </template>
 <script>
-import modal from './modalAgenda'
-import headerAgenda from './headerAgenda'
-import reservadosAgenda from './reservadosAgenda'
-import horariosAgenda from './horariosAgenda'
 
 export default {
 	
@@ -78,18 +51,39 @@ export default {
 		}
 	},
 	components:{
-		modal:modal,
-		headerAgenda:headerAgenda,
-		reservadosAgenda:reservadosAgenda,
-		horariosAgenda:horariosAgenda
 	}
 	
+		// background:#272a38 !important;
+		// color:#c9c9c9 !important;
 }
 </script>
 <style scoped>
-	small{
-		padding: 2px 8px;
-		border-radius: 4px;
+	.card-professional{
+		border-radius:8px;	
 	}
-
+	.btn-agenda{
+		margin-top:10px;
+		color:#eee !important;	
+	}
+	.img-perfil{
+		border:5px solid #999;
+	}
+	.btn-perfil{
+		
+		margin-top:5px;
+	}
+	ld{
+		font-size:13px;
+	}
+	ld dd{
+			font-size:16px;
+	}
+	small{
+		margin-top:5px;
+		padding:3px;
+		border-radius:3px;
+	}
+	.card-footer{
+		background:#8d00a6;
+	}
 </style>

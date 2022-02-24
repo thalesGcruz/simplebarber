@@ -3,7 +3,9 @@ export default {
 		return {	
 			id: null,
 			subscriberuser_id: null,
-			name: null
+			name: null,
+			startTime:null,
+			endTime:null,
 		}
 	},
 	getters: {
@@ -12,6 +14,12 @@ export default {
 		},
 		getBarbershopId(state){
 			return state.id
+		},
+		getBarbershopEndTime(state){
+			return state.endTime
+		},
+		getBarbershopStartTime(state){
+			return state.startTime
 		}
 	},
 	mutations: {
@@ -20,6 +28,12 @@ export default {
 		},
 		updateBarbershopId(state, val){
 			state.id = val
+		},
+		updateBarbershopStartTime(state, val){
+			state.startTime = val
+		},
+		updateBarbershopEndTime(state, val){
+			state.endTime = val
 		}
 	},
 	actions: {
@@ -28,6 +42,12 @@ export default {
 		},
 		setBarbershopId({commit}, val){
 			commit('updateBarbershopId', val)
+		},
+		setBarbershopStartTime({commit}, val){
+			commit('updateBarbershopStartTime', val)
+		},
+		setBarbershopEndTime({commit}, val){
+			commit('updateBarbershopEndTime', val)
 		}
 	}
 }

@@ -3,14 +3,13 @@ import { mapActions, mapGetters } from 'vuex'
 
 const loadStore = {
   methods:{
-    loadStore(startView){
+    loadStore(startView,startHorarios){
       if(this.getUserId === null){
 
           const auth_token = Cookie.get('auth_token')
           
           this.axios.post('/me', {token:auth_token})
           .then((response) => {
-            console.log(response.data)
             this.setUserId(response.data.user.id)
             this.setUserName(response.data.user.name)
             this.setUserFirstName(response.data.user.firstName)
@@ -30,6 +29,9 @@ const loadStore = {
                   // setando barbershop
                   this.setBarbershopId(response.data.barbershop.id)
                   this.setBarbershopName(response.data.barbershop.name)
+                  this.setBarbershopStartTime(response.data.barbershop.start_time)
+                  this.setBarbershopEndTime(response.data.barbershop.end_time)
+                  this.setAgendamentos(response.data.barbershop.agendamentos)
                   // setando professions
                   this.setProfessionals(response.data.barbershop.professionals);
                   // setando servicos
@@ -37,6 +39,7 @@ const loadStore = {
                   // setando atendentes caixa
                   this.setCashierAttedants(response.data.barbershop.cashier_attendants)
                   
+                  startHorarios()
                   startView()
                   break
                 
@@ -52,6 +55,7 @@ const loadStore = {
                   // setando barbershop
                   this.setBarbershopId(response.data.barbershop.id)
                   this.setBarbershopName(response.data.barbershop.name)
+                  this.setAgendamentos(response.data.barbershop.agendamentos)
                   //setando professionais
                   this.setProfessionals(response.data.barbershop.professionals)
                   // setando services
@@ -89,7 +93,10 @@ const loadStore = {
       'setProfessionals',
       'setServices',
       'setCashierAttedants',
-      'setCashierAttedantId'
+      'setCashierAttedantId',
+      'setBarbershopStartTime',
+      'setBarbershopEndTime',
+      'setAgendamentos'
     ])
   
   },
@@ -101,6 +108,7 @@ const loadStore = {
           'getUserName',
           'getBarbershopId',
           'getProfessionals',
+          'getAgendamentos'
       ])
   }
 

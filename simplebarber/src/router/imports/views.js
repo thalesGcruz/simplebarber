@@ -16,7 +16,8 @@ const views = {
 	myBarbershop: myBarbershop,
 	services: services,
 	cashRegister:cashRegister,
-	cashierAttendants:cashierAttendants
+	cashierAttendants:cashierAttendants,
+	agenda:agenda
 }
 
 export default views

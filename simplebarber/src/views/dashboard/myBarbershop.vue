@@ -10,7 +10,11 @@
 					</h5>
 					<br><br>
 						<h3>{{ getBarbershopName }}</h3>
+						<span>Horário de funcionamento de {{ getBarbershopStartTime }} as
+							{{ getBarbershopEndTime }}
+						</span>
 					<p class="card-text">
+						
 					</p>
 					<br>
 					<editBarbershop />
@@ -39,7 +43,11 @@
 			editBarbershop: editBarbershop
 		},
 		computed:{
-			...mapGetters(['getBarbershopName'])
+			...mapGetters([
+				'getBarbershopName',
+				'getBarbershopStartTime',
+				'getBarbershopEndTime'
+				])
 		}
 	}
 </script>

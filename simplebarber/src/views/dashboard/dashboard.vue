@@ -25,16 +25,19 @@
 </template>
 <script>
 import loadStore from '../../mixins/loadStore'
+import startHorarios from '../../mixins/startHorarios'
 import navbar from './template/navbar'
 import sidebar from './template/sidebar'
 import controlSidebar from './template/controlSidebar'
 import footerDash from './template/footer'
-// import {mapGetter} from 'vuex'
+
 export default{
-	mixins:[loadStore],
+	mixins:[loadStore, startHorarios],
 	created(){
-		this.loadStore(this.startView)
+		this.loadStore(this.startView,this.startHorarios)
 	},
+		
+	
 	data(){
 		return {
 			view: false,

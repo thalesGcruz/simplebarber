@@ -1,20 +1,21 @@
 <template>
 <div v-if="view">
-	<headerContent title="Profissionais" />	
+	<!-- <headerContent title="Profissionais" />	 -->
 	<div class="card card-solid">
-        <div class="card-header row">
-			<div class="col-7">
-				
-			</div>
-			<div class="col-5 text-right">
-				<registerProfessionals />
-			</div>
-        </div>
-        <div class="card-body pb-0">
+       <div class="card-header row">
+					<div class="col-7">
+						<input type="search" placeholder=" Search..." class="input-search">
+					</div>
+					<div class="col-5 text-right">
+						<registerProfessionals />
+					</div>
+       </div>
+      <div class="card-body pb-0">
 			<div class="row">
 				
 				<cardProfessionals v-for="professional in getProfessionals" 
 					:key="professional.id"
+					:id="professional.id"
 					:name="professional.name"
 					:firstName="professional.firstName"
 					:email="professional.email"
@@ -26,20 +27,20 @@
 			</div>
 		</div>
 		<div class="card-footer">
-          <nav aria-label="Contacts Page Navigation">
+          <!-- <nav aria-label="Contacts Page Navigation">
             <ul class="pagination justify-content-center m-0">
               <li class="page-item active"><a class="page-link" href="#">1</a></li>
               <li class="page-item"><a class="page-link" href="#">2</a></li>
               <li class="page-item"><a class="page-link" href="#">3</a></li>
             </ul>
-          </nav>
+          </nav> -->
         </div>
 	</div>	
 			
 </div>
 </template>
 <script>	
-	import headerContent from './template/headerContent'
+	// import headerContent from './template/headerContent'
 	import controllerAccess from '../../mixins/controllerAccess'
 	import cardProfessionals from '../../components/cardProfessionals'
 	import registerProfessionals from '../../components/registerProfessionals'
@@ -53,7 +54,7 @@
 			}
 		},
 		components:{
-			headerContent: headerContent,
+			// headerContent: headerContent,
 			cardProfessionals: cardProfessionals,
 			registerProfessionals: registerProfessionals
 		},
@@ -64,3 +65,17 @@
 		}		
 	}
 </script>
+<style scoped>
+	.input-search{
+		padding:5px 10px;
+		width:350px;
+		border:1px solid #ccc;
+		border-radius:4px;
+	}
+	.card{
+		margin-top:10px;
+	}
+	.card-header{
+		border-bottom:none !important;
+	}
+</style>
